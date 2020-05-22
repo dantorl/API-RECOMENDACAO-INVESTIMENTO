@@ -25,4 +25,10 @@ public class RecomendacaoController {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND);
             }
         }
+
+        @PostMapping
+        public ResponseEntity<Recomendacao> criarRecomendacao(@RequestBody @Valid Recomendacao recomendacao) {
+            Recomendacao recomendacaoObjeto = recomendacaoService.criarRecomendacao(recomendacao);
+            return ResponseEntity.status(201).body(recomendacaoObjeto);
+        }
 }
