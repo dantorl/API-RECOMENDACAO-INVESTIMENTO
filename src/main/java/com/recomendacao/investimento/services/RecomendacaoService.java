@@ -29,4 +29,9 @@ public class RecomendacaoService {
         Optional<Recomendacao> recomendacao = recomendacaoRepository.findById(id);
         return recomendacao;
     }
+
+    public Recomendacao criarRecomendacao(Recomendacao recomendacao){
+        Recomendacao recomendacaoObjeto = recomendacaoRepository.save(recomendacao);
+        return recomendacaoObjeto;
+    }
 }
