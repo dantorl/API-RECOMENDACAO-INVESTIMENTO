@@ -24,4 +24,9 @@ public class RecomendacaoService {
         Iterable<Investimento> investimentoIterable = investimentoRepository.findAllById(investimentoId);
         return investimentoIterable;
     }
+
+    public Optional<Recomendacao> buscarRecomendacao(Integer id){
+        Optional<Recomendacao> recomendacao = recomendacaoRepository.findById(id);
+        return recomendacao;
+    }
 }
