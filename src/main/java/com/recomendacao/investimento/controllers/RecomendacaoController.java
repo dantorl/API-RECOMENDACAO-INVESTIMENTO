@@ -1,6 +1,7 @@
 package com.recomendacao.investimento.controllers;
 
 import com.recomendacao.investimento.models.Recomendacao;
+import com.recomendacao.investimento.services.RecomendacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class RecomendacaoController {
 
         @GetMapping("/{id}")
         public Recomendacao buscarRecomendacao(@PathVariable Integer id) {
-            Optional<Recomendacao> optionalRecomendacao = recomendacaoService.buscarRecomendacaoPorId(id);
+            Optional<Recomendacao> optionalRecomendacao = recomendacaoService.buscarRecomendacao(id);
 
             if (optionalRecomendacao.isPresent()) {
                 return optionalRecomendacao.get();

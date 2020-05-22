@@ -6,9 +6,10 @@ import com.recomendacao.investimento.enums.TipoDeInvestimento;
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.constraints.NotNull;
+import java.util.List;
 
 @Entity
-@Table(name = "Recomendacao")
+@Table(name = "recomendacao")
 public class Recomendacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //gera ID sequencial e único
@@ -24,29 +25,22 @@ public class Recomendacao {
     private TipoDeInvestimento tipoDeInvestimento;
 
     @NotNull
-    private double perc_recomendado;
+    private Double perc_recomendado;
 
+    @ManyToMany
     @NotNull
-    private Integer id_invest_recomendado;
-
-    @NotNull
-    private String nome_invest_recomendado;
-
-    @NotNull
-    private double rentabilidade_invest_recomendado;
+    private List<Recomendacao> recomendacoes;
 
     public Recomendacao() {
     }
 
-    public Recomendacao(Integer id, @NotNull Integer id_investidor, @NotNull PerfilDeInvestidor perfilDeInvestidor, @NotNull TipoDeInvestimento tipoDeInvestimento, @NotNull double perc_recomendado, @NotNull Integer id_invest_recomendado, @NotNull String nome_invest_recomendado, @NotNull double rentabilidade_invest_recomendado) {
+    public Recomendacao(Integer id, @NotNull Integer id_investidor, @NotNull PerfilDeInvestidor perfilDeInvestidor, @NotNull TipoDeInvestimento tipoDeInvestimento, @NotNull Double perc_recomendado, @NotNull List<Recomendacao> recomendacoes) {
         this.id = id;
         this.id_investidor = id_investidor;
         this.perfilDeInvestidor = perfilDeInvestidor;
         this.tipoDeInvestimento = tipoDeInvestimento;
         this.perc_recomendado = perc_recomendado;
-        this.id_invest_recomendado = id_invest_recomendado;
-        this.nome_invest_recomendado = nome_invest_recomendado;
-        this.rentabilidade_invest_recomendado = rentabilidade_invest_recomendado;
+        this.recomendacoes = recomendacoes;
     }
 
     public Integer getId() {
@@ -81,35 +75,19 @@ public class Recomendacao {
         this.tipoDeInvestimento = tipoDeInvestimento;
     }
 
-    public double getPerc_recomendado() {
+    public Double getPerc_recomendado() {
         return perc_recomendado;
     }
 
-    public void setPerc_recomendado(double perc_recomendado) {
+    public void setPerc_recomendado(Double perc_recomendado) {
         this.perc_recomendado = perc_recomendado;
     }
 
-    public Integer getId_invest_recomendado() {
-        return id_invest_recomendado;
+    public List<Recomendacao> getRecomendacoes() {
+        return recomendacoes;
     }
 
-    public void setId_invest_recomendado(Integer id_invest_recomendado) {
-        this.id_invest_recomendado = id_invest_recomendado;
-    }
-
-    public String getNome_invest_recomendado() {
-        return nome_invest_recomendado;
-    }
-
-    public void setNome_invest_recomendado(String nome_invest_recomendado) {
-        this.nome_invest_recomendado = nome_invest_recomendado;
-    }
-
-    public double getRentabilidade_invest_recomendado() {
-        return rentabilidade_invest_recomendado;
-    }
-
-    public void setRentabilidade_invest_recomendado(double rentabilidade_invest_recomendado) {
-        this.rentabilidade_invest_recomendado = rentabilidade_invest_recomendado;
+    public void setRecomendacoes(List<Recomendacao> recomendacoes) {
+        this.recomendacoes = recomendacoes;
     }
 }
