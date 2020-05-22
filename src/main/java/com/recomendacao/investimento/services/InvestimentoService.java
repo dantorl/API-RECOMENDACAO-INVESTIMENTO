@@ -2,6 +2,7 @@ package com.recomendacao.investimento.services;
 
 import com.recomendacao.investimento.models.Investimento;
 import com.recomendacao.investimento.repositories.InvestimentoRepository;
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -19,7 +20,11 @@ public class InvestimentoService {
 
     public Optional<Investimento> buscarPorId(Integer id) {
         Optional<Investimento> investimentoOptional = investimentoRepository.findById(id);
-        return investimentoOptional;
+        if (investimentoOptional.isPresent()) {
+            return investimentoOptional;
+        } else {
+            throw new ObjectNotFoundException("","Nao localizado o Código de investimento informado");
+        }
     }
 
     public Investimento cadastrarInvestimento(Investimento investimento) {

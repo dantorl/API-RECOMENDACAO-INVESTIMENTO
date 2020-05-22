@@ -33,7 +33,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     };
     private static final String[] PUBLIC_MEATCHERS_POST = {
             "/investimentos",
-            "/investimentos/**"
+            "/investimentos/**",
+            "/userinvest/**"
     };
     @Override
     protected void configure(HttpSecurity http) throws Exception{

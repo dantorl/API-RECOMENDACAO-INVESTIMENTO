@@ -25,12 +25,12 @@ public class InvestimentoController {
     @GetMapping("/{id}")
     public Investimento buscarInvestimento(@PathVariable Integer id)
     {
-        Optional<Investimento> investimentoOptional = investimentoService.buscarPorId(id);
-
-        if(investimentoOptional.isPresent()){
+        Optional<Investimento> investimentoOptional;
+        try{
+            investimentoOptional = investimentoService.buscarPorId(id);
             return investimentoOptional.get();
-        }else {
-            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getLocalizedMessage());
         }
     }
 
@@ -44,19 +44,26 @@ public class InvestimentoController {
     public Investimento atualizarInvestimento(@PathVariable Integer id, @RequestBody Investimento investimento)
     {
         investimento.setId(id);
+        Optional<Investimento> investimentoOptional;
+        try{
+            investimentoOptional = investimentoService.buscarPorId(id);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST, e.getLocalizedMessage());
+        }
         Investimento investimentoObjeto = investimentoService.atualizarInvestimento(investimento);
         return investimentoObjeto;
     }
 
     @DeleteMapping("/{id}")
     public Investimento deletarInvestimento(@PathVariable Integer id){
-        Optional<Investimento> investimentoOptional = investimentoService.buscarPorId(id);
-        if(investimentoOptional.isPresent()){
-            investimentoService.deletarInvestimento(investimentoOptional.get());
-            return investimentoOptional.get();
-        }else{
-            throw new ResponseStatusException(HttpStatus.NO_CONTENT);
+        Optional<Investimento> investimentoOptional;
+        try{
+            investimentoOptional = investimentoService.buscarPorId(id);
+        } catch (Exception e){
+            throw new ResponseStatusException(HttpStatus.NO_CONTENT, e.getLocalizedMessage());
         }
+        investimentoService.deletarInvestimento(investimentoOptional.get());
+        return investimentoOptional.get();
     }
 
 }
