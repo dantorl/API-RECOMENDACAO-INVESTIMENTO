@@ -35,7 +35,6 @@ public class Investimento {
     @NotNull
     private double vlr_min_aplicacao;
 
-
     public Investimento() {
     }
 

@@ -24,7 +24,7 @@ public class Investidor {
     public Investidor() {
     }
 
-    public Investidor(Integer id, @Size(min = 8, max = 100, message = "O nome deve ter no minimo 8 caracteres e no maximo 100") String nome, @Email(message = "O formato do email é invalido") String email, PerfilDeInvestidor perfilDeInvestidor) {
+    public Investidor(Integer id, String nome, String email, PerfilDeInvestidor perfilDeInvestidor) {
         this.id = id;
         this.nome = nome;
         this.email = email;

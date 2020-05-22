@@ -4,9 +4,9 @@ import com.recomendacao.investimento.enums.PerfilDeInvestidor;
 import com.recomendacao.investimento.enums.TipoDeInvestimento;
 
 import javax.persistence.*;
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.constraints.NotNull;
 import java.util.List;
+import java.util.Optional;
 
 @Entity
 @Table(name = "Recomendacao")
@@ -15,8 +15,8 @@ public class Recomendacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //gera ID sequencial e único
     private Integer id;
 
-    @NotNull
-    private Integer id_investidor;
+    @Transient
+    private Optional<Investidor> investidores;
 
     @NotNull
     private PerfilDeInvestidor perfilDeInvestidor;
@@ -34,9 +34,9 @@ public class Recomendacao {
     public Recomendacao() {
     }
 
-    public Recomendacao(Integer id, @NotNull Integer id_investidor, @NotNull PerfilDeInvestidor perfilDeInvestidor, @NotNull TipoDeInvestimento tipoDeInvestimento, @NotNull Double perc_recomendado, @NotNull List<Investimento> investimentos) {
+    public Recomendacao(Integer id, Optional<Investidor> investidores, PerfilDeInvestidor perfilDeInvestidor, TipoDeInvestimento tipoDeInvestimento, Double perc_recomendado, List<Investimento> investimentos) {
         this.id = id;
-        this.id_investidor = id_investidor;
+        this.investidores = investidores;
         this.perfilDeInvestidor = perfilDeInvestidor;
         this.tipoDeInvestimento = tipoDeInvestimento;
         this.perc_recomendado = perc_recomendado;
@@ -51,12 +51,12 @@ public class Recomendacao {
         this.id = id;
     }
 
-    public Integer getId_investidor() {
-        return id_investidor;
+    public Optional<Investidor> getInvestidores() {
+        return investidores;
     }
 
-    public void setId_investidor(Integer id_investidor) {
-        this.id_investidor = id_investidor;
+    public void setInvestidores(Optional<Investidor> investidores) {
+        this.investidores = investidores;
     }
 
     public PerfilDeInvestidor getPerfilDeInvestidor() {

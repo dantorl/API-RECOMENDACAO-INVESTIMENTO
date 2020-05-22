@@ -1,7 +1,9 @@
 package com.recomendacao.investimento.services;
 
+import com.recomendacao.investimento.models.Investidor;
 import com.recomendacao.investimento.models.Investimento;
 import com.recomendacao.investimento.models.Recomendacao;
+import com.recomendacao.investimento.repositories.InvestidorRepository;
 import com.recomendacao.investimento.repositories.InvestimentoRepository;
 import com.recomendacao.investimento.repositories.RecomendacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,9 +22,17 @@ public class RecomendacaoService {
     @Autowired
     private InvestimentoRepository investimentoRepository;
 
-    public Iterable<Investimento> buscarInvestimentos(List<Integer> investimentoId){
-        Iterable<Investimento> investimentoIterable = investimentoRepository.findAllById(investimentoId);
+    @Autowired
+    private InvestidorRepository investidorRepository;
+
+    public Optional<Investimento> buscarInvestimentos(Integer investimentoId){
+        Optional<Investimento> investimentoIterable = investimentoRepository.findById(investimentoId);
         return investimentoIterable;
+    }
+
+    public Iterable<Investidor> buscarInvestidor(List<Integer> investidorId){
+        Iterable<Investidor> investidorIterable = investidorRepository.findAllById(investidorId);
+        return investidorIterable;
     }
 
     public Optional<Recomendacao> buscarRecomendacao(Integer id){

@@ -11,6 +11,8 @@ import org.springframework.web.server.ResponseStatusException;
 import javax.validation.Valid;
 import java.util.Optional;
 
+@RestController
+@RequestMapping("/recomendacoes")
 public class RecomendacaoController {
 
         @Autowired
