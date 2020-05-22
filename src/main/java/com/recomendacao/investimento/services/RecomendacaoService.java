@@ -34,4 +34,27 @@ public class RecomendacaoService {
         Recomendacao recomendacaoObjeto = recomendacaoRepository.save(recomendacao);
         return recomendacaoObjeto;
     }
+
+    public Recomendacao atualizarRecomendacao(Recomendacao recomendacao){
+        Optional<Recomendacao> recomendacaoOptional = recomendacaoRepository.findById(recomendacao.getId());
+        if (recomendacaoOptional.isPresent()){
+            Recomendacao recomendacaoData = recomendacaoOptional.get();
+
+            if (recomendacao.getPerfilDeInvestidor() == null){
+                recomendacao.setPerfilDeInvestidor(recomendacaoData.getPerfilDeInvestidor());
+            }
+            if (recomendacao.getTipoDeInvestimento() == null){
+                recomendacao.setTipoDeInvestimento(recomendacaoData.getTipoDeInvestimento());
+            }
+            if (recomendacao.getPerc_recomendado() == null){
+                recomendacao.setPerc_recomendado(recomendacaoData.getPerc_recomendado());
+            }
+            if (recomendacao.getRecomendacoes() == null){
+                recomendacao.setRecomendacoes(recomendacaoData.getRecomendacoes());
+            }
+            return recomendacaoRepository.save(recomendacao);
+        } else {
+            return null;
+        }
+    }
 }
