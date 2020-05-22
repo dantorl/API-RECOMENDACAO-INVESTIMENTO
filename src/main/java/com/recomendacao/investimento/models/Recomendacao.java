@@ -9,7 +9,7 @@ import javax.validation.constraints.NotNull;
 import java.util.List;
 
 @Entity
-@Table(name = "recomendacao")
+@Table(name = "Recomendacao")
 public class Recomendacao {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY) //gera ID sequencial e único
@@ -29,18 +29,18 @@ public class Recomendacao {
 
     @ManyToMany
     @NotNull
-    private List<Recomendacao> recomendacoes;
+    private List<Investimento> investimentos;
 
     public Recomendacao() {
     }
 
-    public Recomendacao(Integer id, @NotNull Integer id_investidor, @NotNull PerfilDeInvestidor perfilDeInvestidor, @NotNull TipoDeInvestimento tipoDeInvestimento, @NotNull Double perc_recomendado, @NotNull List<Recomendacao> recomendacoes) {
+    public Recomendacao(Integer id, @NotNull Integer id_investidor, @NotNull PerfilDeInvestidor perfilDeInvestidor, @NotNull TipoDeInvestimento tipoDeInvestimento, @NotNull Double perc_recomendado, @NotNull List<Investimento> investimentos) {
         this.id = id;
         this.id_investidor = id_investidor;
         this.perfilDeInvestidor = perfilDeInvestidor;
         this.tipoDeInvestimento = tipoDeInvestimento;
         this.perc_recomendado = perc_recomendado;
-        this.recomendacoes = recomendacoes;
+        this.investimentos = investimentos;
     }
 
     public Integer getId() {
@@ -83,11 +83,11 @@ public class Recomendacao {
         this.perc_recomendado = perc_recomendado;
     }
 
-    public List<Recomendacao> getRecomendacoes() {
-        return recomendacoes;
+    public List<Investimento> getInvestimentos() {
+        return investimentos;
     }
 
-    public void setRecomendacoes(List<Recomendacao> recomendacoes) {
-        this.recomendacoes = recomendacoes;
+    public void setInvestimentos(List<Investimento> investimentos) {
+        this.investimentos = investimentos;
     }
 }

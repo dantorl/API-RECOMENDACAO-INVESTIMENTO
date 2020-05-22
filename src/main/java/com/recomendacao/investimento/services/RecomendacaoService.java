@@ -49,8 +49,8 @@ public class RecomendacaoService {
             if (recomendacao.getPerc_recomendado() == null){
                 recomendacao.setPerc_recomendado(recomendacaoData.getPerc_recomendado());
             }
-            if (recomendacao.getRecomendacoes() == null){
-                recomendacao.setRecomendacoes(recomendacaoData.getRecomendacoes());
+            if (recomendacao.getInvestimentos() == null){
+                recomendacao.setInvestimentos(recomendacaoData.getInvestimentos());
             }
             return recomendacaoRepository.save(recomendacao);
         } else {
