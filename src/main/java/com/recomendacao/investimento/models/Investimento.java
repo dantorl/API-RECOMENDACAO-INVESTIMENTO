@@ -30,16 +30,16 @@ public class Investimento {
     private TipoDeInvestimento tipoDeInvestimento;
 
     @NotNull
-    private double rentabilidade;
+    private Double rentabilidade;
 
     @NotNull
-    private double vlr_min_aplicacao;
+    private Double vlr_min_aplicacao;
 
 
     public Investimento() {
     }
 
-    public Investimento(Integer id, @Size(min = 3, max = 100, message = "O nome deve ter no minimo 8 caracteres e no maximo 100") String nome, @NotNull String descricao, @NotNull RiscoInvestimento riscoInvestimento, @NotNull TipoDeInvestimento tipoDeInvestimento, @NotNull double rentabilidade, @NotNull double vlr_min_aplicacao) {
+    public Investimento(Integer id, @Size(min = 3, max = 100, message = "O nome deve ter no minimo 8 caracteres e no maximo 100") String nome, @NotNull String descricao, @NotNull RiscoInvestimento riscoInvestimento, @NotNull TipoDeInvestimento tipoDeInvestimento, @NotNull Double rentabilidade, @NotNull Double vlr_min_aplicacao) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
@@ -89,19 +89,19 @@ public class Investimento {
         this.tipoDeInvestimento = tipoDeInvestimento;
     }
 
-    public double getVlr_min_aplicacao() {
+    public Double getVlr_min_aplicacao() {
         return vlr_min_aplicacao;
     }
 
-    public void setVlr_min_aplicacao(double vlr_min_aplicacao) {
+    public void setVlr_min_aplicacao(Double vlr_min_aplicacao) {
         this.vlr_min_aplicacao = vlr_min_aplicacao;
     }
 
-    public double getRentabilidade() {
+    public Double getRentabilidade() {
         return rentabilidade;
     }
 
-    public void setRentabilidade(double rentabilidade) {
+    public void setRentabilidade(Double rentabilidade) {
         this.rentabilidade = rentabilidade;
     }
 }
