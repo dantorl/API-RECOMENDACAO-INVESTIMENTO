@@ -31,4 +31,16 @@ public class RecomendacaoController {
             Recomendacao recomendacaoObjeto = recomendacaoService.criarRecomendacao(recomendacao);
             return ResponseEntity.status(201).body(recomendacaoObjeto);
         }
+
+        @PutMapping("/{id}")
+        public Recomendacao atualizarRecomendacao(@PathVariable Integer id, @RequestBody @Valid Recomendacao recomendacao) {
+            recomendacao.setId(id);
+            Recomendacao recomendacaoData = recomendacaoService.atualizarRecomendacao(recomendacao);
+
+            if (recomendacaoData != null) {
+                return recomendacaoData;
+            } else {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
+        }
 }
