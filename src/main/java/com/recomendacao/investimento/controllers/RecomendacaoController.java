@@ -1,0 +1,28 @@
+package com.recomendacao.investimento.controllers;
+
+import com.recomendacao.investimento.models.Recomendacao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
+
+import javax.validation.Valid;
+import java.util.Optional;
+
+public class RecomendacaoController {
+
+        @Autowired
+        RecomendacaoService recomendacaoService;
+
+        @GetMapping("/{id}")
+        public Recomendacao buscarRecomendacao(@PathVariable Integer id) {
+            Optional<Recomendacao> optionalRecomendacao = recomendacaoService.buscarRecomendacaoPorId(id);
+
+            if (optionalRecomendacao.isPresent()) {
+                return optionalRecomendacao.get();
+            } else {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND);
+            }
+        }
+}
