@@ -9,7 +9,6 @@ import com.recomendacao.investimento.repositories.RecomendacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 import java.util.Optional;
 
@@ -25,22 +24,23 @@ public class RecomendacaoService {
     @Autowired
     private InvestidorRepository investidorRepository;
 
-    public Optional<Investimento> buscarInvestimentos(Integer investimentoId){
-        Optional<Investimento> investimentoIterable = investimentoRepository.findById(investimentoId);
+    public Iterable<Investimento> buscarInvestimentos(List<Integer> investimentosId){
+        Iterable<Investimento> investimentoIterable = investimentoRepository.findAllById(investimentosId);
         return investimentoIterable;
     }
 
-    public Iterable<Investidor> buscarInvestidor(List<Integer> investidorId){
-        Iterable<Investidor> investidorIterable = investidorRepository.findAllById(investidorId);
-        return investidorIterable;
+    public Optional<Investidor> buscarInvestidor(Integer investidorId){
+        Optional<Investidor> investidorOptional = investidorRepository.findById(investidorId);
+        return investidorOptional;
     }
 
     public Optional<Recomendacao> buscarRecomendacao(Integer id){
-        Optional<Recomendacao> recomendacao = recomendacaoRepository.findById(id);
-        return recomendacao;
+        Optional<Recomendacao> recomendacaoOptional = recomendacaoRepository.findById(id);
+        return recomendacaoOptional;
     }
 
     public Recomendacao criarRecomendacao(Recomendacao recomendacao){
+
         Recomendacao recomendacaoObjeto = recomendacaoRepository.save(recomendacao);
         return recomendacaoObjeto;
     }

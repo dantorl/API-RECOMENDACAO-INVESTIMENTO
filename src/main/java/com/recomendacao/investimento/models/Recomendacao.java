@@ -16,7 +16,7 @@ public class Recomendacao {
     private Integer id;
 
     @Transient
-    private Optional<Investidor> investidores;
+    private Optional<Investidor> investidor;
 
     @NotNull
     private PerfilDeInvestidor perfilDeInvestidor;
@@ -28,15 +28,14 @@ public class Recomendacao {
     private Double perc_recomendado;
 
     @ManyToMany
-    @NotNull
     private List<Investimento> investimentos;
 
     public Recomendacao() {
     }
 
-    public Recomendacao(Integer id, Optional<Investidor> investidores, PerfilDeInvestidor perfilDeInvestidor, TipoDeInvestimento tipoDeInvestimento, Double perc_recomendado, List<Investimento> investimentos) {
+    public Recomendacao(Integer id, Optional<Investidor> investidor, PerfilDeInvestidor perfilDeInvestidor, TipoDeInvestimento tipoDeInvestimento, Double perc_recomendado, List<Investimento> investimentos) {
         this.id = id;
-        this.investidores = investidores;
+        this.investidor = investidor;
         this.perfilDeInvestidor = perfilDeInvestidor;
         this.tipoDeInvestimento = tipoDeInvestimento;
         this.perc_recomendado = perc_recomendado;
@@ -51,12 +50,12 @@ public class Recomendacao {
         this.id = id;
     }
 
-    public Optional<Investidor> getInvestidores() {
-        return investidores;
+    public Optional<Investidor> getInvestidor() {
+        return investidor;
     }
 
-    public void setInvestidores(Optional<Investidor> investidores) {
-        this.investidores = investidores;
+    public void setInvestidor(Optional<Investidor> investidor) {
+        this.investidor = investidor;
     }
 
     public PerfilDeInvestidor getPerfilDeInvestidor() {
