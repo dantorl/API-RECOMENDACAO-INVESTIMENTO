@@ -37,12 +37,6 @@ public class RecomendacaoController {
 
         @PostMapping
         public ResponseEntity<Recomendacao> criarRecomendacao(@RequestBody @Valid Recomendacao recomendacao) {
-            List<Integer> investimentosId = new ArrayList<>();
-            for (Investimento investimento : recomendacao.getInvestimentos()){
-                investimentosId.add(investimento.getId());
-            }
-            Iterable<Investimento> investimentoIterable = recomendacaoService.buscarInvestimentos(investimentosId);
-            recomendacao.setInvestimentos((List) (investimentoIterable));
 
             Investidor investidorOptional = recomendacaoService.buscarInvestidor(recomendacao.getInvestidor().getId());
             recomendacao.setInvestidor(investidorOptional);

@@ -23,6 +23,8 @@ public class Investimento {
     @NotNull
     private String descricao;
 
+    private Double perc_recomendado;
+
     @NotNull
     private RiscoInvestimento riscoInvestimento;
 
@@ -38,10 +40,11 @@ public class Investimento {
     public Investimento() {
     }
 
-    public Investimento(Integer id, @Size(min = 3, max = 100, message = "O nome deve ter no minimo 8 caracteres e no maximo 100") String nome, @NotNull String descricao, @NotNull RiscoInvestimento riscoInvestimento, @NotNull TipoDeInvestimento tipoDeInvestimento, @NotNull double rentabilidade, @NotNull double vlr_min_aplicacao) {
+    public Investimento(Integer id, @Size(min = 3, max = 100, message = "O nome deve ter no minimo 8 caracteres e no maximo 100") String nome, @NotNull String descricao, Double perc_recomendado, @NotNull RiscoInvestimento riscoInvestimento, @NotNull TipoDeInvestimento tipoDeInvestimento, @NotNull double rentabilidade, @NotNull double vlr_min_aplicacao) {
         this.id = id;
         this.nome = nome;
         this.descricao = descricao;
+        this.perc_recomendado = perc_recomendado;
         this.riscoInvestimento = riscoInvestimento;
         this.tipoDeInvestimento = tipoDeInvestimento;
         this.rentabilidade = rentabilidade;
@@ -70,6 +73,14 @@ public class Investimento {
 
     public void setDescricao(String descricao) {
         this.descricao = descricao;
+    }
+
+    public Double getPerc_recomendado() {
+        return perc_recomendado;
+    }
+
+    public void setPerc_recomendado(Double perc_recomendado) {
+        this.perc_recomendado = perc_recomendado;
     }
 
     public RiscoInvestimento getRiscoInvestimento() {

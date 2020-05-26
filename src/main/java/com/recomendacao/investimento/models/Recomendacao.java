@@ -15,11 +15,9 @@ public class Recomendacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //gera ID sequencial e único
     private Integer id;
 
+    @NotNull
     @OneToOne
     private Investidor investidor;
-
-    @NotNull
-    private Double perc_recomendado;
 
     @ManyToMany
     private List<Investimento> investimentos;
@@ -27,10 +25,9 @@ public class Recomendacao {
     public Recomendacao() {
     }
 
-    public Recomendacao(Integer id, Investidor investidor, Double perc_recomendado, List<Investimento> investimentos) {
+    public Recomendacao(Integer id, Investidor investidor, List<Investimento> investimentos) {
         this.id = id;
         this.investidor = investidor;
-        this.perc_recomendado = perc_recomendado;
         this.investimentos = investimentos;
     }
 
@@ -48,14 +45,6 @@ public class Recomendacao {
 
     public void setInvestidor(Investidor investidor) {
         this.investidor = investidor;
-    }
-
-    public Double getPerc_recomendado() {
-        return perc_recomendado;
-    }
-
-    public void setPerc_recomendado(Double perc_recomendado) {
-        this.perc_recomendado = perc_recomendado;
     }
 
     public List<Investimento> getInvestimentos() {
