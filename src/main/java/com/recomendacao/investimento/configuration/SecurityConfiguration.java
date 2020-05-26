@@ -30,12 +30,19 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private static final String[] PUBLIC_MEATCHERS_GET = {
             "/investimentos",
             "/investimentos/**",
+            "/questionario",
+            "/questionario/**",
+            "/resposta",
+            "/resposta/**"
     };
     private static final String[] PUBLIC_MEATCHERS_POST = {
             "/investimentos",
             "/investimentos/**",
-            "/investidores",
-            "/userinvest/**"
+            "/userinvest/**",
+            "/questionario",
+            "/questionario/**",
+            "/resposta",
+            "/resposta/**"
     };
     @Override
     protected void configure(HttpSecurity http) throws Exception{
