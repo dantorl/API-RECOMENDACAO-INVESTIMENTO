@@ -1,5 +1,6 @@
 package com.recomendacao.investimento.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.recomendacao.investimento.enums.PerfilDeInvestidor;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Investidor")
+@JsonIgnoreProperties(value = {"senha"}, allowSetters = true)
 public class Investidor {
     @Id //identifica que o campo abaixo é o ID da tabela mysql
     @GeneratedValue(strategy = GenerationType.IDENTITY) //gera ID sequencial e único
@@ -18,6 +20,8 @@ public class Investidor {
 
     @Email(message = "O formato do email é invalido")
     private String email;
+
+    private String senha;
 
     private PerfilDeInvestidor perfilDeInvestidor;
 
@@ -53,6 +57,14 @@ public class Investidor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public PerfilDeInvestidor getPerfilDeInvestidor() {
