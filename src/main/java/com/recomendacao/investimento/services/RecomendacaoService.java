@@ -31,9 +31,9 @@ public class RecomendacaoService {
         return investimentoIterable;
     }
 
-    public Optional<Investidor> buscarInvestidor(Integer investidorId){
+    public Investidor buscarInvestidor(Integer investidorId){
         Optional<Investidor> investidorOptional = investidorRepository.findById(investidorId);
-        return investidorOptional;
+        return investidorOptional.get();
     }
 
     public Optional<Recomendacao> buscarRecomendacao(Integer id){
@@ -52,11 +52,8 @@ public class RecomendacaoService {
         if (recomendacaoOptional.isPresent()){
             Recomendacao recomendacaoData = recomendacaoOptional.get();
 
-            if (recomendacao.getPerfilDeInvestidor() == null){
-                recomendacao.setPerfilDeInvestidor(recomendacaoData.getPerfilDeInvestidor());
-            }
-            if (recomendacao.getTipoDeInvestimento() == null){
-                recomendacao.setTipoDeInvestimento(recomendacaoData.getTipoDeInvestimento());
+            if (recomendacao.getInvestidor() == null){
+                recomendacao.setInvestidor(recomendacaoData.getInvestidor());
             }
             if (recomendacao.getPerc_recomendado() == null){
                 recomendacao.setPerc_recomendado(recomendacaoData.getPerc_recomendado());

@@ -44,7 +44,7 @@ public class RecomendacaoController {
             Iterable<Investimento> investimentoIterable = recomendacaoService.buscarInvestimentos(investimentosId);
             recomendacao.setInvestimentos((List) (investimentoIterable));
 
-            Optional<Investidor> investidorOptional = recomendacaoService.buscarInvestidor(recomendacao.getInvestidor().get().getId());
+            Investidor investidorOptional = recomendacaoService.buscarInvestidor(recomendacao.getInvestidor().getId());
             recomendacao.setInvestidor(investidorOptional);
 
             Recomendacao recomendacaoObjeto = recomendacaoService.criarRecomendacao(recomendacao);

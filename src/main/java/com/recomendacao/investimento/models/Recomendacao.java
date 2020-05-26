@@ -15,14 +15,8 @@ public class Recomendacao {
     @GeneratedValue(strategy = GenerationType.IDENTITY) //gera ID sequencial e único
     private Integer id;
 
-    @Transient
-    private Optional<Investidor> investidor;
-
-    @NotNull
-    private PerfilDeInvestidor perfilDeInvestidor;
-
-    @NotNull
-    private TipoDeInvestimento tipoDeInvestimento;
+    @OneToOne
+    private Investidor investidor;
 
     @NotNull
     private Double perc_recomendado;
@@ -33,11 +27,9 @@ public class Recomendacao {
     public Recomendacao() {
     }
 
-    public Recomendacao(Integer id, Optional<Investidor> investidor, PerfilDeInvestidor perfilDeInvestidor, TipoDeInvestimento tipoDeInvestimento, Double perc_recomendado, List<Investimento> investimentos) {
+    public Recomendacao(Integer id, Investidor investidor, Double perc_recomendado, List<Investimento> investimentos) {
         this.id = id;
         this.investidor = investidor;
-        this.perfilDeInvestidor = perfilDeInvestidor;
-        this.tipoDeInvestimento = tipoDeInvestimento;
         this.perc_recomendado = perc_recomendado;
         this.investimentos = investimentos;
     }
@@ -50,28 +42,12 @@ public class Recomendacao {
         this.id = id;
     }
 
-    public Optional<Investidor> getInvestidor() {
+    public Investidor getInvestidor() {
         return investidor;
     }
 
-    public void setInvestidor(Optional<Investidor> investidor) {
+    public void setInvestidor(Investidor investidor) {
         this.investidor = investidor;
-    }
-
-    public PerfilDeInvestidor getPerfilDeInvestidor() {
-        return perfilDeInvestidor;
-    }
-
-    public void setPerfilDeInvestidor(PerfilDeInvestidor perfilDeInvestidor) {
-        this.perfilDeInvestidor = perfilDeInvestidor;
-    }
-
-    public TipoDeInvestimento getTipoDeInvestimento() {
-        return tipoDeInvestimento;
-    }
-
-    public void setTipoDeInvestimento(TipoDeInvestimento tipoDeInvestimento) {
-        this.tipoDeInvestimento = tipoDeInvestimento;
     }
 
     public Double getPerc_recomendado() {
