@@ -32,6 +32,16 @@ public class UsuarioService implements UserDetailsService {
         return usuarioRepository.save(usuario);
     }
 
+    public Usuario atualizarUsuario(Usuario usuario){
+        Usuario userOBJ = usuarioRepository.findByEmail(usuario.getEmail());
+
+        userOBJ.setNome(usuario.getNome());
+        userOBJ.setSenha(usuario.getSenha());
+        userOBJ.setEmail(usuario.getEmail());
+
+        return usuarioRepository.save(userOBJ);
+    }
+
     @Override
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         Usuario usuario = usuarioRepository.findByEmail(email);

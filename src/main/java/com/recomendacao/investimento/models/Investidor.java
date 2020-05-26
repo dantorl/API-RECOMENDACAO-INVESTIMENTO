@@ -1,5 +1,6 @@
 package com.recomendacao.investimento.models;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.recomendacao.investimento.enums.PerfilDeInvestidor;
 
 import javax.persistence.*;
@@ -8,6 +9,7 @@ import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "Investidor")
+@JsonIgnoreProperties(value = {"senha"}, allowSetters = true)
 public class Investidor {
     @Id //identifica que o campo abaixo é o ID da tabela mysql
     @GeneratedValue(strategy = GenerationType.IDENTITY) //gera ID sequencial e único
