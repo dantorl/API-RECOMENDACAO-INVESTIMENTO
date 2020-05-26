@@ -26,7 +26,7 @@ public class InvestidorService {
         return investidorOptional;
     }
 
-    public Investidor salvarLead(Investidor investidor) {
+    public Investidor salvarInvestidor(Investidor investidor) {
         Investidor investidorObjeto = investidorRepository.save(investidor);
         return investidor;
     }
@@ -41,6 +41,9 @@ public class InvestidorService {
             }
             if(investidor.getEmail() == null){
                 investidor.setEmail(investidorData.getEmail());
+            }
+            if(investidor.getSenha() == null){
+                investidor.setSenha(investidorData.getSenha());
             }
             if(investidor.getPerfilDeInvestidor() == null){
                 investidor.setPerfilDeInvestidor(investidorData.getPerfilDeInvestidor());

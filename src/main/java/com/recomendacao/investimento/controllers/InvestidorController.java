@@ -23,7 +23,7 @@ public class InvestidorController {
     private InvestidorService investidorService;
 
     @GetMapping
-    public Iterable<Lead> buscarTodosInvestidores(){
+    public Iterable<Investidor> buscarTodosInvestidores(){
         return investidorService.buscarTodosInvestidores();
     }
 
@@ -42,7 +42,7 @@ public class InvestidorController {
     public ResponseEntity<Investidor> salvarInvestidor(@RequestBody @Valid Investidor investidor){
 
 
-        Investidor investidorObjeto = investidorService.salvarLead(investidor);
+        Investidor investidorObjeto = investidorService.salvarInvestidor(investidor);
         return ResponseEntity.status(201).body(investidorObjeto);
     }
 

@@ -19,6 +19,8 @@ public class Investidor {
     @Email(message = "O formato do email é invalido")
     private String email;
 
+    private String senha;
+
     private PerfilDeInvestidor perfilDeInvestidor;
 
     public Investidor() {
@@ -53,6 +55,14 @@ public class Investidor {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getSenha() {
+        return senha;
+    }
+
+    public void setSenha(String senha) {
+        this.senha = senha;
     }
 
     public PerfilDeInvestidor getPerfilDeInvestidor() {
