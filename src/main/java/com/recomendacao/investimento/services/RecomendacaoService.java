@@ -25,9 +25,7 @@ public class RecomendacaoService {
     private InvestidorRepository investidorRepository;
 
     public Iterable<Investimento> buscarInvestimentos(List<Integer> investimentosId){
-        System.out.println(investimentosId);
         Iterable<Investimento> investimentoIterable = investimentoRepository.findAllById(investimentosId);
-        System.out.println(investimentoIterable);
         return investimentoIterable;
     }
 
