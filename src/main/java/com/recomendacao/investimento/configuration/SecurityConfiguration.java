@@ -34,6 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private static final String[] PUBLIC_MEATCHERS_POST = {
             "/investimentos",
             "/investimentos/**",
+            "/investidores",
             "/userinvest/**"
     };
     @Override

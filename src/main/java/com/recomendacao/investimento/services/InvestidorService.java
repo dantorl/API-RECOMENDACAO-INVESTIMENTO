@@ -3,6 +3,7 @@ package com.recomendacao.investimento.services;
 import com.recomendacao.investimento.models.Investidor;
 import com.recomendacao.investimento.repositories.InvestidorRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -15,6 +16,9 @@ public class InvestidorService {
 
     @Autowired
     private InvestidorRepository investidorRepository;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     public Iterable<Investidor> buscarTodosInvestidores() {
         Iterable<Investidor> investidores = investidorRepository.findAll();
@@ -49,6 +53,9 @@ public class InvestidorService {
                 investidor.setPerfilDeInvestidor(investidorData.getPerfilDeInvestidor());
             }
         }
+        String senha = investidor.getSenha();
+        String encode = bCryptPasswordEncoder.encode(senha);
+        investidor.setSenha(encode);
         Investidor investidorObjeto = investidorRepository.save(investidor);
         return investidorObjeto;
 }
