@@ -33,3 +33,15 @@ Cadastrar investimento:
 	"rentabilidade": 0.6,
 	"vlr_min_aplicacao": 100.0
 	}
+
+Gerar Recomendação:
+    -post
+    -http://localhost:8080/recomendacoes 
+    { "investidor": {
+    "id": 2
+    },
+    "investimentos":[
+    {
+    }
+    ]
+    } 
