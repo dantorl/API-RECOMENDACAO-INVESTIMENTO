@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.recomendacao.investimento.services.InvestidorServiceTests
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 2.329 s - in com.recomendacao.investimento.services.InvestidorServiceTests

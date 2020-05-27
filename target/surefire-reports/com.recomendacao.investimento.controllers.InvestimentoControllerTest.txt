@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.recomendacao.investimento.controllers.InvestimentoControllerTest
+-------------------------------------------------------------------------------
+Tests run: 10, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 1.63 s - in com.recomendacao.investimento.controllers.InvestimentoControllerTest
