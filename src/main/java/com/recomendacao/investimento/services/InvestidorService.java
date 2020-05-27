@@ -25,6 +25,11 @@ public class InvestidorService {
         return investidores;
     }
 
+    public Investidor buscarInvestidor(Integer investidorId){
+        Optional<Investidor> investidorOptional = investidorRepository.findById(investidorId);
+        return investidorOptional.get();
+    }
+
     public Optional<Investidor> buscarPorId(Integer id) {
         Optional<Investidor> investidorOptional = investidorRepository.findById(id);
         return investidorOptional;
