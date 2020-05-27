@@ -99,19 +99,19 @@ public class Investimento {
         this.tipoDeInvestimento = tipoDeInvestimento;
     }
 
-    public double getVlr_min_aplicacao() {
+    public Double getVlr_min_aplicacao() {
         return vlr_min_aplicacao;
     }
 
-    public void setVlr_min_aplicacao(double vlr_min_aplicacao) {
+    public void setVlr_min_aplicacao(Double vlr_min_aplicacao) {
         this.vlr_min_aplicacao = vlr_min_aplicacao;
     }
 
-    public double getRentabilidade() {
+    public Double getRentabilidade() {
         return rentabilidade;
     }
 
-    public void setRentabilidade(double rentabilidade) {
+    public void setRentabilidade(Double rentabilidade) {
         this.rentabilidade = rentabilidade;
     }
 }
