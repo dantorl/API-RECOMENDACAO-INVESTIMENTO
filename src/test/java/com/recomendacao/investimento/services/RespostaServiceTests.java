@@ -69,8 +69,10 @@ public class RespostaServiceTests {
         resposta.setIdQuestionario(2);
         resposta.setPeso(2);
         resposta.setResposta("Teste 2");
+        Optional<Resposta> optionalResposta = Optional.of(resposta);
 
         Mockito.when(respostaRepository.save(Mockito.any(Resposta.class))).thenReturn(resposta);
+        Mockito.when(respostaRepository.findById(Mockito.any(Integer.class))).thenReturn(optionalResposta);
 
         Resposta respostaObjeto = respostaService.atualizarResposta(resposta);
 

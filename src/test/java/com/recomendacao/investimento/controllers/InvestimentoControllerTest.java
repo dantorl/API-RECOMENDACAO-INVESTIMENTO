@@ -195,7 +195,7 @@ public class InvestimentoControllerTest {
 
         mockMvc.perform(MockMvcRequestBuilders
                 .delete("/investimentos/"+investimento.getId()))
-                .andExpect(MockMvcResultMatchers.status().isOk());
+                .andExpect(MockMvcResultMatchers.status().isNoContent());
         Mockito.verify(investimentoService, Mockito.times(0)).deletarInvestimento(Mockito.any(Investimento.class));
     }
 }

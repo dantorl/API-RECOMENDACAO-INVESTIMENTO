@@ -30,14 +30,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     private static final String[] PUBLIC_MEATCHERS_GET = {
             "/investimentos",
             "/investimentos/**",
+            "/investidores",
             "/questionario",
             "/questionario/**",
             "/resposta",
             "/resposta/**"
     };
     private static final String[] PUBLIC_MEATCHERS_POST = {
-            "/investimentos",
-            "/investimentos/**",
+            "/investidores",
+            "/investidores/**",
             "/userinvest/**",
             "/questionario",
             "/questionario/**",
