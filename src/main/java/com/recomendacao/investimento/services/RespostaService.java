@@ -5,6 +5,7 @@ import com.recomendacao.investimento.models.Investimento;
 import com.recomendacao.investimento.models.Questionario;
 import com.recomendacao.investimento.models.Resposta;
 import com.recomendacao.investimento.repositories.RespostaRepository;
+import org.hibernate.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,8 +29,12 @@ public class RespostaService {
     }
 
     public Optional<Resposta> retornarRespostaPorId(Integer id) {
-        Optional<Resposta> investimentoOptional = respostaRepository.findById(id);
-        return investimentoOptional;
+        Optional<Resposta> respostaOptional = respostaRepository.findById(id);
+        if (respostaOptional.isPresent()) {
+            return respostaOptional;
+        } else {
+            throw new ObjectNotFoundException("","Nao localizado o Id de resposta informado");
+        }
     }
 
     public void deletarResposta(Resposta resposta) {
