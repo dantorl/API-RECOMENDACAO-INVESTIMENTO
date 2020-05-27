@@ -27,23 +27,12 @@ public class RecomendacaoService {
     @Autowired
     private InvestidorRepository investidorRepository;
 
-    public Iterable<Investimento> buscarInvestimentos(List<Integer> investimentosId){
-        Iterable<Investimento> investimentoIterable = investimentoRepository.findAllById(investimentosId);
-        return investimentoIterable;
-    }
-
-    public Investidor buscarInvestidor(Integer investidorId){
-        Optional<Investidor> investidorOptional = investidorRepository.findById(investidorId);
-        return investidorOptional.get();
-    }
+    @Autowired
+    private InvestimentoService investimentoService;
 
     public Optional<Recomendacao> buscarRecomendacao(Integer id){
         Optional<Recomendacao> recomendacaoOptional = recomendacaoRepository.findById(id);
         return recomendacaoOptional;
-    }
-
-    public Iterable<Investimento> buscarTodosInvestimentos(){
-        return investimentoRepository.findAll();
     }
 
     public Recomendacao criarRecomendacao(Recomendacao recomendacao){
@@ -55,7 +44,7 @@ public class RecomendacaoService {
             boolean alocacaoBaixoRisco = false;
             boolean alocacaoMedioRisco = false;
             boolean alocacaoAltoRisco = false;
-            for (Investimento investimento : buscarTodosInvestimentos()){
+            for (Investimento investimento : investimentoService.buscarTodosInvestimentos()){
                 if (investimento.getRiscoInvestimento() == RiscoInvestimento.BAIXO && alocacaoBaixoRisco == false){
                     investimentosId.add(investimento.getId());
                     investimento.setPerc_recomendado(85.00);
@@ -72,14 +61,14 @@ public class RecomendacaoService {
                     alocacaoAltoRisco = true;
                 }
             }
-            investimentoIterable = buscarInvestimentos(investimentosId);
+            investimentoIterable = investimentoService.buscarInvestimentos(investimentosId);
             recomendacao.setInvestimentos((List) (investimentoIterable));
 
         } else if (recomendacao.getInvestidor().getPerfilDeInvestidor() == PerfilDeInvestidor.MODERADO){
             boolean alocacaoBaixoRisco = false;
             boolean alocacaoMedioRisco = false;
             boolean alocacaoAltoRisco = false;
-            for (Investimento investimento : buscarTodosInvestimentos()){
+            for (Investimento investimento : investimentoService.buscarTodosInvestimentos()){
                 if (investimento.getRiscoInvestimento() == RiscoInvestimento.BAIXO && alocacaoBaixoRisco == false){
                     investimentosId.add(investimento.getId());
                     investimento.setPerc_recomendado(60.00);
@@ -96,14 +85,14 @@ public class RecomendacaoService {
                     alocacaoAltoRisco = true;
                 }
             }
-            investimentoIterable = buscarInvestimentos(investimentosId);
+            investimentoIterable = investimentoService.buscarInvestimentos(investimentosId);
             recomendacao.setInvestimentos((List) (investimentoIterable));
 
         } else if (recomendacao.getInvestidor().getPerfilDeInvestidor() == PerfilDeInvestidor.ARROJADO){
             boolean alocacaoBaixoRisco = false;
             boolean alocacaoMedioRisco = false;
             boolean alocacaoAltoRisco = false;
-            for (Investimento investimento : buscarTodosInvestimentos()){
+            for (Investimento investimento : investimentoService.buscarTodosInvestimentos()){
                 if (investimento.getRiscoInvestimento() == RiscoInvestimento.BAIXO && alocacaoBaixoRisco == false){
                     investimentosId.add(investimento.getId());
                     investimento.setPerc_recomendado(40.00);
@@ -120,14 +109,14 @@ public class RecomendacaoService {
                     alocacaoAltoRisco = true;
                 }
             }
-            investimentoIterable = buscarInvestimentos(investimentosId);
+            investimentoIterable = investimentoService.buscarInvestimentos(investimentosId);
             recomendacao.setInvestimentos((List) (investimentoIterable));
 
         } else if (recomendacao.getInvestidor().getPerfilDeInvestidor() == PerfilDeInvestidor.AGRESSIVO){
             boolean alocacaoBaixoRisco = false;
             boolean alocacaoMedioRisco = false;
             boolean alocacaoAltoRisco = false;
-            for (Investimento investimento : buscarTodosInvestimentos()){
+            for (Investimento investimento : investimentoService.buscarTodosInvestimentos()){
                 if (investimento.getRiscoInvestimento() == RiscoInvestimento.BAIXO && alocacaoBaixoRisco == false){
                     investimentosId.add(investimento.getId());
                     investimento.setPerc_recomendado(30.00);
@@ -144,7 +133,7 @@ public class RecomendacaoService {
                     alocacaoAltoRisco = true;
                 }
             }
-            investimentoIterable = buscarInvestimentos(investimentosId);
+            investimentoIterable = investimentoService.buscarInvestimentos(investimentosId);
             recomendacao.setInvestimentos((List) (investimentoIterable));
         }
 
