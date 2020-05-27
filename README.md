@@ -1,3 +1,5 @@
+IP AWS: 18.231.164.179 
+
 Informações MariaDB:
 	-Database: recomendacao_invest_collector
 	-Usuário: lc
