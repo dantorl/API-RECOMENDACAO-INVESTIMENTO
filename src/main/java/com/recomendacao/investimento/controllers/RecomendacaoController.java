@@ -1,20 +1,17 @@
 package com.recomendacao.investimento.controllers;
 
 import com.recomendacao.investimento.models.Investidor;
-import com.recomendacao.investimento.models.Investimento;
 import com.recomendacao.investimento.models.Recomendacao;
+import com.recomendacao.investimento.services.InvestidorService;
+import com.recomendacao.investimento.services.InvestimentoService;
 import com.recomendacao.investimento.services.RecomendacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.Valid;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Optional;
 
 @RestController
@@ -23,6 +20,12 @@ public class RecomendacaoController {
 
         @Autowired
         RecomendacaoService recomendacaoService;
+
+        @Autowired
+        InvestimentoService investimentoService;
+
+        @Autowired
+        InvestidorService investidorService;
 
         @GetMapping("/{id}")
         public Recomendacao buscarRecomendacao(@PathVariable Integer id) {
@@ -38,7 +41,7 @@ public class RecomendacaoController {
         @PostMapping
         public ResponseEntity<Recomendacao> criarRecomendacao(@RequestBody @Valid Recomendacao recomendacao) {
 
-            Investidor investidorOptional = recomendacaoService.buscarInvestidor(recomendacao.getInvestidor().getId());
+            Investidor investidorOptional = investidorService.buscarInvestidor(recomendacao.getInvestidor().getId());
             recomendacao.setInvestidor(investidorOptional);
 
             Recomendacao recomendacaoObjeto = recomendacaoService.criarRecomendacao(recomendacao);
